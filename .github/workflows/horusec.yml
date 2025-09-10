@@ -23,7 +23,7 @@ jobs:
       - name: Running Horusec
         run:
           docker run -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/src/horusec horuszup/horusec-cli:v2.9.0-beta.3
-          horusec start -p /src/horusec -P $(pwd)
+          horusec start -p /src/horusec -P $(pwd) -e="true"
       #stage: analyze
       #image: docker:20.10.8
       #services:
