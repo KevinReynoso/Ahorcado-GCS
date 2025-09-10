@@ -1,0 +1,36 @@
+name: Horusec Security Analysis
+
+# Define cuándo se ejecutará este flujo de trabajo.
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  horusec-scan:
+    # La tarea se ejecutará en un entorno Ubuntu.
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Descarga el código del repositorio en el entorno de trabajo.
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+
+      # Paso 2: Ejecuta Horusec usando un contenedor de Docker.
+      - name: Run Horusec Scan
+        run: |
+          # El comando 'docker run' ejecuta un contenedor temporal.
+          # '--rm' lo elimina después.
+          # '-v ${{ github.workspace }}:/src' es la parte más importante:
+          # Mapea tu código (ubicado en ${{ github.workspace }})
+          # al directorio /src dentro del contenedor de Horusec.
+          docker run --rm \
+          -v ${{ github.workspace }}:/src \
+          horuszup/horusec-cli:v2.9.0-beta.3 \
+          horusec start -p /src
+
+      # Paso 3: Opcional, puedes añadir un paso para procesar los resultados
+      # Por ejemplo, para crear un informe o una notificación.
