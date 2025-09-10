@@ -2,16 +2,17 @@ services:
   mi-app:
    build: .
    volumes:
-   - ./Codigo:/src
+   - ./:/src
    # working_dir: /app/src
     #command: python main.py
   horusec:
     image: horuszup/horusec-cli:v2.9.0-beta.3
     container_name: horusec
     volumes:
-      - .:/src # Monta tu directorio actual al directorio /src en el contenedor
-    command:
-      - horusec start -p /src
+      - ./:/src # Monta tu directorio actual al directorio /src en el contenedor
+    #command:
+    #  - horusec start -p /src
+    command: ["horusec", "start", "-p", "/src","-D"]
       #- ls
     networks:
       - horusec-network
