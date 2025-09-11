@@ -22,6 +22,6 @@ jobs:
         run:
           #docker run -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/src/horusec horuszup/horusec-cli:v2.9.0-beta.3
           docker compose -f docker-compose.horusec.yml up --build --abort-on-container-exit --exit-code-from horusec-cli
-          horusec start -p /src/horusec -P $(pwd) -e="true" --config-file-path /src/horusec/horusec-config.json
+          #horusec start -p /src/horusec -P $(pwd) -e="true" --config-file-path /src/horusec/horusec-config.json
   
   
