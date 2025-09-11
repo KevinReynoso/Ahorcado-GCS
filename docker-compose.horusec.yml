@@ -1,6 +1,6 @@
 services:
   mi-app:
-   build: .
+   build: . #Aca usamos el Dockerfile
    volumes:
    - ./:/src
    # working_dir: /app/src
