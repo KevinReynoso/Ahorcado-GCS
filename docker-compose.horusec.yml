@@ -12,7 +12,8 @@ services:
       - ./:/src # Monta tu directorio actual al directorio /src en el contenedor
     #command:
     #  - horusec start -p /src
-    command: ["horusec", "start", "-p", "/src","-D"]
+    #horusec start -p /src/horusec -P $(pwd) -e="true" --config-file-path /src/horusec/horusec-config.json
+    command: ["horusec", "start", "-p", "/src","-D","-e=true", "--config-file-path", "/src/horusec/horusec-config.json"]
       #- ls
     networks:
       - horusec-network
