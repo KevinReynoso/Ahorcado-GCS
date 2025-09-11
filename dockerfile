@@ -13,7 +13,6 @@ FROM openjdk:11-jre-slim
 # Establece el directorio de trabajo dentro del contenedor.
 WORKDIR /src
 
-# Copia tu archivo JAR en el contenedor.
 COPY . /src
 
 # Define el comando para ejecutar tu aplicación.
