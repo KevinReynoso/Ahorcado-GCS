@@ -13,7 +13,7 @@ services:
     #command:
     #  - horusec start -p /src
     #horusec start -p /src/horusec -P $(pwd) -e="true" --config-file-path /src/horusec/horusec-config.json
-    command: ["horusec", "start", "-p", "/src","-D","-e=true", "--config-file-path", "/src/horusec/horusec-config.json"]
+    command: ["horusec", "start", "-p", "/src","-D","-e=true", "--config-file-path", "/src/horusec-config.json"]
       #- ls
     networks:
       - horusec-network
