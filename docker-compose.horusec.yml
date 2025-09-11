@@ -1,19 +1,15 @@
 services:
-  mi-app:
+  ahorcado:
    build: . #Aca usamos el Dockerfile
    volumes:
    - ./:/src
-   # working_dir: /app/src
-    #command: python main.py
   horusec:
     image: horuszup/horusec-cli:v2.9.0-beta.3
     container_name: horusec
     volumes:
       - ./:/src # Monta tu directorio actual al directorio /src en el contenedor
-    #command:
-    #  - horusec start -p /src
     #horusec start -p /src/horusec -P $(pwd) -e="true" --config-file-path /src/horusec/horusec-config.json
-    command: ["horusec", "start", "-p", "/src","-D", "--config-file-path", "/src/horusec-config.json"]
+    command: ["horusec", "start", "-p", "/src","-D", "--config-file-path", "/src/horusec-config.json","--log-level=debug"]
       #- horusec start -p /src -D --config-file-path /src/horusec-config.json
     networks:
       - horusec-network
